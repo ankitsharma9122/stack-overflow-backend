@@ -1,14 +1,15 @@
 const jwt = require("jsonwebtoken");
 
-const auth = (req, res, next) => {
+module.exports = (req, res, next) => {
+  const token = req.header("token");
+  if (!token) {
+    return res.status(401).json({ message: "Access denied" });
+  }
   try {
-    const token = req.headers.authorization.split(" ")[1];
-    let decodeData = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decodeData?.id;
+    const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+    req.email = decodedToken.email;
     next();
   } catch (error) {
-    console.log(error);
+    return res.status(403).json({ message: "Invalid token" });
   }
 };
-
-export default auth;

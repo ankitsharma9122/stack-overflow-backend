@@ -13,16 +13,6 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  about: {
-    type: String,
-  },
-  tags: {
-    type: [String],
-  },
-  joinedON: {
-    type: Date,
-    default: Date.now,
-  },
 });
 
 module.exports = mongoose.model("Users", userSchema);
