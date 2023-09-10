@@ -1,5 +1,4 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const Questions = require("../models/questions");
 const router = express.Router();
 const auth = require("../middleware/auth");
@@ -14,6 +13,7 @@ router.post("ask", auth, async (req, res) => {
     console.log(error);
     res.status(409).json("Error in posting question");
   }
+  ``;
 });
 
 router.get("/all", async (req, res) => {
