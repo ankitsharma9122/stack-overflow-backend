@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const questionSchema = mongoose.Schema({
   questionTitle: {
@@ -16,14 +16,6 @@ const questionSchema = mongoose.Schema({
   noOfAnswers: {
     type: Number,
     default: 0,
-  },
-  upVote: {
-    type: [String],
-    default: [],
-  },
-  downVote: {
-    type: [String],
-    default: [],
   },
   userPosted: {
     type: String,
@@ -49,4 +41,4 @@ const questionSchema = mongoose.Schema({
   ],
 });
 
-export default mongoose.model("Question", questionSchema);
+module.exports = mongoose.model("Questions", questionSchema);
